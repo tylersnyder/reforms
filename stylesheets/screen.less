@@ -1,0 +1,335 @@
+// out: screen.css
+/*
+ * Fonts
+ **********************************************************/
+
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
+@import url("http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+
+/*
+ * Colors
+ **********************************************************/
+
+@blue:  #08f;
+@green: #1a4;
+@red:   #c33;
+@gray:  #555;
+
+/*
+ * Media Queries
+ **********************************************************/
+
+@xs: ~"min-width: 320px";
+@sm: ~"min-width: 480px";
+@md: ~"min-width: 600px";
+@lg: ~"min-width: 720px";
+@xl: ~"min-width: 900px";
+@xxl: ~"min-width: 1100px";
+
+/*
+ * Reset
+ **********************************************************/
+
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+body {
+  height: 100%;
+  font-family: sans-serif;
+  font-size: 13px;
+  line-height: 1;
+  color: @gray;
+  background-color: #eee;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: "Open Sans";
+}
+
+h1 {
+  margin: 0 0 20px;
+  font-size: 36px;
+  font-weight: 400;
+}
+
+h2 {
+  margin: 20px 0;
+  font-size: 18px;
+  &.title {
+    margin: 20px 0 0;
+  }
+}
+
+a {
+  color: #59d;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+p {
+  margin: 0 0 20px;
+  line-height: 1.5;
+}
+
+ul {
+  margin: 0 0 20px;
+  list-style: none;
+}
+
+hr {
+  height: 1px;
+  border: none;
+  background-color: #bbb;
+}
+
+/*
+ * Forms
+ **********************************************************/
+
+form {
+  max-width: 100%;
+  width: 600px;
+}
+
+label {
+  display: block;
+  padding: 20px 0 6px 0;
+  color: #505050;
+  font-size: 14px;
+  font-weight: 700;
+  > .hint {
+    font-size: 11px;
+    color: #aaa;
+    float: right;
+  }
+
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+  border: 0;
+  outline: 0;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+select {
+  -webkit-appearance: none;
+  border-radius: 0;
+  background-image: url("data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==");
+  background-repeat: no-repeat;
+  background-position: 97% center;
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #bbb;
+  background-color: #fff;
+}
+
+.button {
+  min-width: 100px;
+  margin-top: 20px;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  border: 1px solid #37b;
+  background-color: #59d;
+  cursor: pointer;
+  &.gray {
+    background-color: #c2c2c2;
+    border-color: #aaa;
+  }
+}
+
+/*
+ * Radio/checkbox inputs
+ **********************************************************/
+
+.form-group--radio,
+.form-group--checkbox {
+  display: inline-block;
+  position: relative;
+  margin: 20px 20px 20px 0;
+  label {
+    padding: 0 0 0 28px;
+    cursor: pointer;
+    &:before {
+      content: "\f00c";
+      position: absolute;
+      top: -4px;
+      left: 0;
+      display: block;
+      width: 21px;
+      height: 21px;
+      font-family: fontawesome;
+      line-height: 19px;
+      text-align: center;
+      color: #fff;
+      border: 1px solid #bbb;
+      background: #fff;
+    }
+  }
+  input {
+    position: absolute;
+    opacity: 0;
+    &[type="radio"] ~ label:before {
+      content: "\f111";
+      font-size: 8px;
+      border-radius: 50%;
+      padding: 0 6px;
+    }
+    &[type="checkbox"] ~ label:before {
+        padding: 0 3px;
+    }
+    &:checked ~ label:before {
+      color: @gray;
+    }
+  }
+}
+
+/*
+ * Form grid columns
+ **********************************************************/
+
+.form-group--half {
+  @media(@md) {
+    width: 50%;
+    float: left;
+    &:nth-of-type(odd) {
+      padding-right: 6px;
+    }
+    &:nth-of-type(even) {
+      padding-left: 6px;
+    }
+  }
+}
+
+.form-group--third {
+  @media(@md) {
+    width: 33.3333%;
+    float: left;
+    padding: 0 12px;
+    &:nth-of-type(odd) {
+      padding-left: 0;
+    }
+    &:nth-of-type(odd) {
+      padding-right: 0;
+    }
+  }
+}
+
+.form-group--fourth {
+  @media(@md) {
+    width: 25%;
+    float: left;
+    padding: 0 6px;
+    &:first-of-type {
+      padding-left: 0;
+    }
+    &:last-of-type {
+      padding-right: 0;
+    }
+  }
+}
+
+/*
+ * Validation feedback
+ **********************************************************/
+
+small[id*="-error"] {
+  color: @red;
+  font-weight: bold;
+}
+
+input,
+select {
+  &:focus {
+    border-color: @blue;
+  }
+  &.ui-state-valid {
+    border-color: @green;
+  }
+  &.ui-state-error {
+    border-color: @red;
+  }
+}
+
+/*
+ * Tables
+ **********************************************************/
+
+table {
+  width: 100%;
+  margin: 0 0 20px;
+  border-collapse: collapse;
+  border: 1px solid #bbb;
+  background-color: #fff;
+}
+
+th, td {
+  padding: 10px;
+  border-right: 1px solid #bbb;
+}
+
+th {
+  font-weight: 600;
+  background-color: #ddd;
+}
+
+tr:nth-child(even) {
+  background-color: #eee;
+}
+
+/*
+ * Layout
+ **********************************************************/
+
+.wrapper {
+  padding: 20px;
+  @media(@md) {
+    padding: 50px;
+  }
+}
+
+.row {
+  &:before,
+  &:after {
+    content: "";
+    display: block;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+.fancy-list li {
+  margin: 0 0 10px;
+  &:before {
+    content: "\f00c";
+    margin-right: 5px;
+    font-family: fontawesome;
+    color: #5a5;
+  }
+}
